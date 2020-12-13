@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/notes', [NoteController::class, 'index']);
+
 Route::prefix('/note')->group(function (){
     Route::post('/store', [NoteController::class, 'store']);
     Route::put('/{id}', [NoteController::class, 'update']);
