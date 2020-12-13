@@ -14,7 +14,7 @@ class NoteController extends Controller
      */
     public function index()
     {
-        return Note::orderBy('created_at', 'DESC');
+        return Note::orderBy('created_at', 'DESC')->get();
     }
 
     /**
@@ -35,7 +35,10 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newItem = new Note;
+        $newItem->name = $request->item['name'];
+        $newItem->save();
+        return $newItem;
     }
 
     /**
