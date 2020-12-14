@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Note;
+use Illuminate\Support\Carbon;
 
 class NoteController extends Controller
 {
@@ -72,7 +73,14 @@ class NoteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $existingItem = Note::find($id);
+        if ($existingItem){
+            $existingItem->completed = $request->note['completed'] ? true : false;
+            $existingItem->completed_at = $request->note['completed'] ? Carbon::now() : null;
+            $existingItem->save();
+            return $existingItem;
+        }
+        return "Item Not Found!";
     }
 
     /**
