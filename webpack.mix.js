@@ -15,3 +15,11 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
+
+mix.webpackConfig({
+        devServer: {
+            proxy: {
+                '*': 'http://localhost:8000'
+            }
+        }
+    });
