@@ -3,7 +3,7 @@
        <div class="heading">
        <h2 class="title">Todo list</h2>
         <add-note-form />
-        <!-- <list-view /> -->
+        <list-view />
        </div>
     </div>
 </template>
