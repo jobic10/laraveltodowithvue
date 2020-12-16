@@ -37,9 +37,6 @@ methods:{
         catch(error => {
             alert(error)
         });
-        alert('Note deleted');
-        }else{
-            alert('Action cancelled');
         }
 
     }
