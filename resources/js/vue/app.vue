@@ -2,7 +2,7 @@
     <div class="todoListContainer">
        <div class="heading">
        <h2 class="title">Todo list</h2>
-        <add-note-form />
+        <add-note-form v-on:reloadList="getNote()"/>
         <list-view :notes='notes'
         v-on:reloadlist="getNote()"
         />
