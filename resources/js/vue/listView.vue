@@ -10,7 +10,6 @@
 </template>
 <script>
 import listNote from './listNote'
-import ListNote from './listNote.vue'
 export default {
     props: ['notes'],
     components: {
