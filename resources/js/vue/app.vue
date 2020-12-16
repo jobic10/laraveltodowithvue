@@ -3,7 +3,9 @@
        <div class="heading">
        <h2 class="title">Todo list</h2>
         <add-note-form />
-        <list-view />
+        <list-view :notes='notes'
+        v-on:reloadlist="getNote()"
+        />
        </div>
     </div>
 </template>
@@ -16,6 +18,23 @@ components: {
     AddNoteForm,
     ListView,
 
+},
+data: function(){
+    return {
+        notes: []
+    }
+},
+methods: {
+    getNote(){
+        axios.get('api/notes')
+        .then(response => {
+            this.notes = response.data
+        })
+        .catch(error => alert(error));
+    }
+},
+created(){
+    this.getNote();
 }
 }
 </script>
