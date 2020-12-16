@@ -91,6 +91,13 @@ class NoteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $note = Note::find($id);
+        if ($note){
+            $note->delete();
+            return "Note deleted!";
+        }else{
+            return "Note not found!";
+        }
+
     }
 }
