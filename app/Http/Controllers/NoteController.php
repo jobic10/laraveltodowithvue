@@ -73,14 +73,14 @@ class NoteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $existingItem = Note::find($id);
-        if ($existingItem){
-            $existingItem->completed = $request->note['completed'] ? true : false;
-            $existingItem->completed_at = $request->note['completed'] ? Carbon::now() : null;
-            $existingItem->save();
-            return $existingItem;
+        $existingNote = Note::find($id);
+        if ($existingNote){
+            $existingNote->completed = $request->note['completed'] ? true : false;
+            $existingNote->completed_at = $request->note['completed'] ? Carbon::now() : null;
+            $existingNote->save();
+            return $existingNote;
         }
-        return "Item Not Found!";
+        return "Note Not Found!";
     }
 
     /**
