@@ -26,7 +26,6 @@ methods: {
             response => {
                 if (response.status == 201){
                     this.note.name = '';
-                    alert("New Note Saved")
                     this.$emit('reloadList');
                 }
             }
