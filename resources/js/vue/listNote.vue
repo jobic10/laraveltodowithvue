@@ -27,7 +27,8 @@ methods:{
         });
     },
     removeNote(){
-        axios.delete('api/note/' + this.note.id).
+        if (confirm('Are you sure about this?')){
+             axios.delete('api/note/' + this.note.id).
         then(response => {
             if (response.status == 200){
                 this.$emit('notechanged');
@@ -36,6 +37,11 @@ methods:{
         catch(error => {
             alert(error)
         });
+        alert('Note deleted');
+        }else{
+            alert('Action cancelled');
+        }
+
     }
 }
 }
