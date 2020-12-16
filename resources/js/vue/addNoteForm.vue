@@ -3,6 +3,7 @@
         <input type="text" v-model="note.name">
         <font-awesome-icon
         icon="plus-square"
+        @click="addNote()"
         :class="[note.name ? 'active': 'inactive', 'plus']"
         />
     </div>
@@ -14,6 +15,22 @@ data: function(){
         note:{
             name: ""
         }
+    }
+},
+methods: {
+    addNote(){
+        if(this.note.name == '')return;
+        axios.post('api/note/store', {
+            note: this.note
+        }).then(
+            response => {
+                if (response.status == 201){
+                    this.note.name = '';
+                }
+            }
+        ).catch(error => {
+            alert(error)
+        })
     }
 }
 }
