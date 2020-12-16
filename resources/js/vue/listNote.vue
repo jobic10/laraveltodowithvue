@@ -26,7 +26,17 @@ methods:{
             alert(error)
         });
     },
-
+    removeNote(){
+        axios.delete('api/note/' + this.note.id).
+        then(response => {
+            if (response.status == 200){
+                this.$emit('notechanged');
+            }
+        }).
+        catch(error => {
+            alert(error)
+        });
+    }
 }
 }
 </script>
